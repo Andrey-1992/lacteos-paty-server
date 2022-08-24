@@ -12,7 +12,18 @@ CREATE TABLE quesosinventario(
   holladas INT,
   datein DATE NOT NULL,
   dateout DATE,
-  price INT
+  price INT,
+  approvepord VARCHAR(20),
+  approvedprodsalida VARCHAR(20),
+  nopiecessalida VARCHAR(20),
+  lotenum VARCHAR(20),
+  refrigeratiotype VARCHAR(20)
+);
+
+
+
+
+
   /*
   Need to add an extra key for approving the transaction
   from -  Production to Admin - 
@@ -31,7 +42,6 @@ CREATE TABLE quesosinventario(
   5. refrigeratiotype
   */
   /* 
-);
 
 INSERT INTO quesosinventario(
   quesoname, 
