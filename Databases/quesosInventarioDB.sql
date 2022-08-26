@@ -15,7 +15,6 @@ CREATE TABLE quesosinventario(
   price INT,
   approvepord VARCHAR(20),
   approvedprodsalida VARCHAR(20),
-  nopiecessalida VARCHAR(20),
   lotenum VARCHAR(20),
   refrigeratiotype VARCHAR(20)
 );
