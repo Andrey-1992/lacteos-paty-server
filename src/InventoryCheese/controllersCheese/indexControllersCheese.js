@@ -1,12 +1,37 @@
 const { Pool} = require('pg');
 
 const pool = new Pool({
-  host: 'localhost',
-  user: 'postgres',
-  password:'Turing21.',
-  database:'fabricaquesosinv',
-  port: '5432'
+  host: 'ec2-44-205-64-253.compute-1.amazonaws.com',
+  user: 'vnylwrtkvnbpjs',
+  password:'c13da9b87a06305e0b08ff727461b675afa23f0a9ab6edb6e7d1bc58cf1d4617',
+  database:'dl5rv1j4q8i47',
+  port: '5432',
+  ssl: { 
+    rejectUnauthorized: false,
+  }
 });
+
+
+//////////////////
+
+// import { Pool} from 'pg';
+// require('dotenv').config();
+
+// const isProduction = process.env.NODE_ENV === 'production';
+// const connectionString = `postgresql://${vnylwrtkvnbpjs}:${c13da9b87a06305e0b08ff727461b675afa23f0a9ab6edb6e7d1bc58cf1d4617}@${ec2-44-205-64-253.compute-1.amazonaws.com}:5432/${dl5rv1j4q8i47}`;
+
+// export const pool = new Pool({
+//   connectionString: isProduction ? process.env.DATABASE_URL : connectionString,
+//   ssl: { 
+//     rejectUnauthorized: false,
+//   }
+// })
+
+
+
+
+
+////////////////////////////////////////
 
 // Read All
 const getChesseRecord = async (req, res) => {
@@ -46,11 +71,11 @@ const storeChesseRecord = async (req, res) => {
       datein,
       price,
       lotenum,
-      refrigerationtype
+      refrigeratiotype
     } = req.body;
     const response = await pool.query(
-      'INSERT INTO quesosinventario(quesoname, quesostatus, quesoavailability, nopieces, holladas, datein, price, lotenum, refrigerationtype) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)', 
-      [quesoname, quesostatus, quesoavailability, nopieces, holladas, datein, price, lotenum, refrigerationtype]);
+      'INSERT INTO quesosinventario(quesoname, quesostatus, quesoavailability, nopieces, holladas, datein, price, lotenum, refrigeratiotype) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)', 
+      [quesoname, quesostatus, quesoavailability, nopieces, holladas, datein, price, lotenum, refrigeratiotype]);
       return res.status(200).json({
         message: 'The Chesse record have been stored successfully!',
         body: {
@@ -62,7 +87,7 @@ const storeChesseRecord = async (req, res) => {
           datein,
           price,
           lotenum,
-          refrigerationtype
+          refrigeratiotype
         }
       })
     } 
@@ -88,11 +113,11 @@ const storeChesseRecordOut = async (req, res) => {
       dateout,
       price,
       lotenum,
-      refrigerationtype
+      refrigeratiotype
     } = req.body;
     const response = await pool.query(
-      'INSERT INTO quesosinventario(approvedprodsalida, approvepord, quesoname, quesostatus, quesoavailability, nopieces, nopiecessalida, weigthcurrent, datein, dateout, price, lotenum, refrigerationtype) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)', 
-      [approvedprodsalida, approvepord, quesoname, quesostatus, quesoavailability, nopieces, nopiecessalida, weigthcurrent, datein, dateout, price, lotenum, refrigerationtype]);
+      'INSERT INTO quesosinventario(approvedprodsalida, approvepord, quesoname, quesostatus, quesoavailability, nopieces, nopiecessalida, weigthcurrent, datein, dateout, price, lotenum, refrigeratiotype) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)', 
+      [approvedprodsalida, approvepord, quesoname, quesostatus, quesoavailability, nopieces, nopiecessalida, weigthcurrent, datein, dateout, price, lotenum, refrigeratiotype]);
       return res.status(200).json({
         message: 'The Chesse record have been stored successfully!',
         body: {
@@ -108,7 +133,7 @@ const storeChesseRecordOut = async (req, res) => {
           dateout,
           price,
           lotenum,
-          refrigerationtype
+          refrigeratiotype
         }
       })
     } 
@@ -143,9 +168,9 @@ const updateChesseRecordById = async (req, res) => {
       price,
       quesoname,
       lotenum,
-      refrigerationtype
+      refrigeratiotype
     } = req.body;
-    const response = await pool.query(`UPDATE quesosinventario SET approvepord = $1, datein = $2, holladas = $3, nopieces = $4, price = $5, quesoname = $6, lotenum = $7, refrigerationtype = $8 WHERE id = $9`, [
+    const response = await pool.query(`UPDATE quesosinventario SET approvepord = $1, datein = $2, holladas = $3, nopieces = $4, price = $5, quesoname = $6, lotenum = $7, refrigeratiotype = $8 WHERE id = $9`, [
       approvepord,
       datein,
       holladas,
@@ -153,7 +178,7 @@ const updateChesseRecordById = async (req, res) => {
       price,
       quesoname,
       lotenum,
-      refrigerationtype,
+      refrigeratiotype,
       id
     ]);
     return res.status(200).json(`Chesse Record successfully Updated, with ID: ${id}`);
